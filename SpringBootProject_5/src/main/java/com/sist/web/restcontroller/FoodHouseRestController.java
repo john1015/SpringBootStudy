@@ -34,4 +34,49 @@ public class FoodHouseRestController {
 
 		return map;
 	}
+	@GetMapping("food/list_react")
+	public Map food_list(int page) {
+		Map map = new HashMap();
+		int start = (page*12)-12;
+		List<FoodHouseVO> list = fDao.foodListData(start);
+		int count=(int)fDao.count();
+		int totalpage = (int)(Math.ceil(count/12.0));
+		final int BLOCK=10;
+		int startPage=((page-1)/BLOCK*BLOCK)+1;
+		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage) endPage=totalpage;
+		map.put("list",list);
+		map.put("curpage",page);
+		map.put("totalpage",totalpage);
+		map.put("startPage",startPage);
+		map.put("endPage",endPage);
+		
+		return map;
+	}
+	@GetMapping("food/find_react")
+	public Map find_list(int page,String address) {
+		Map map = new HashMap();
+		int start = (page*12)-12;
+		List<FoodHouseVO> list = fDao.foodFindData(start,address);
+		int totalpage = fDao.foodFindTotalPage(address);
+		final int BLOCK=10;
+		int startPage=((page-1)/BLOCK*BLOCK)+1;
+		int endPage=((page-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage) endPage=totalpage;
+		map.put("list",list);
+		map.put("curpage",page);
+		map.put("totalpage",totalpage);
+		map.put("startPage",startPage);
+		map.put("endPage",endPage);
+		
+		return map;
+	}
+	@GetMapping("food/detail_react")
+	public FoodHouseEntity food_detail(int fno) {
+		FoodHouseEntity vo = fDao.findByFno(fno);
+		vo.setHit(vo.getHit()+1); // 조회수 증가
+		fDao.save(vo);
+		vo=fDao.findByFno(fno);
+		return vo;
+	}
 }
