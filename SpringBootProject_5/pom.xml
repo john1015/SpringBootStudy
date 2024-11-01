@@ -33,6 +33,7 @@
 		<dependency>
 	    	<groupId>org.springframework.boot</groupId>
 	    	<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+	    	<version>3.3.5</version>
 		</dependency>
 		<dependency>
 		    <groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -80,6 +81,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sist</groupId>
+			<artifactId>SpringBootProject_1</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
