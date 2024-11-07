@@ -102,6 +102,7 @@ public class FoodHouseRestController {
 			map.put("startPage", startPage);
 			map.put("endPage", endPage);
 			map.put("totalpage", totalpage);
+			// {} => []
 		} catch (Exception ex) {
 			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
