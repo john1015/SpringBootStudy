@@ -11,5 +11,5 @@ import com.sist.web.entity.*;
 @Repository
 public interface RecipeDAO extends JpaRepository<RecipeEntity, Integer>{
 	@Query(value="SELECT * FROM recipe ORDER BY no ASC LIMIT 0,5",nativeQuery = true)
-	public List<RecipeEntity> recipeMainData();
+	public List<RecipeEntity> recipeMainData(); 
 }
